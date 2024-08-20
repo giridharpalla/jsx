@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Object Example</title>
+</head>
+<body>
+
+    <h1>Car Simulation</h1>
+
+    <p><strong>Car Model:</strong> <span id="carModel">Fiat VXI</span></p>
+    <p><strong>Car Color:</strong> <span id="carColor">Red</span></p>
+    <p><strong>Current Speed:</strong> <span id="currentSpeed">45</span> km/h</p>
+
+    <button onclick="accelerateCar()">Accelerate (+10 km/h)</button>
+    <button onclick="brakeCar()">Brake (-10 km/h)</button>
+
+    <script>
+        //-------------States of the Object---------
+        let myCar = {
+            name: "Fiat",            // Name of the car
+            model: "VXI",            // Model of the car
+            color: "red",            // Color of the car
+            numberOfGears: 5,        // Total number of gears in the car
+            currentGear: 3,          // Current gear of the car
+            currentSpeed: 45,        // Current speed of the car in km/h
+
+            //-------------Behavior of the Object--------- 
+            accelerate: function(speedCounter) {
+                this.currentSpeed += speedCounter;  // Increase the current speed by speedCounter
+                return this.currentSpeed;           // Return the new speed
+            },
+
+            brake: function(speedCounter) {
+                this.currentSpeed -= speedCounter;  // Decrease the current speed by speedCounter
+                if (this.currentSpeed < 0) {        // Prevent speed from going below 0
+                    this.currentSpeed = 0;
+                }
+                return this.currentSpeed;           // Return the new speed
+            }
+        }
+
+        // Function to handle acceleration
+        function accelerateCar() {
+            myCar.accelerate(10);
+            updateSpeed();
+        }
+
+        // Function to handle braking
+        function brakeCar() {
+            myCar.brake(10);
+            updateSpeed();
+        }
+
+        // Function to update the displayed speed
+        function updateSpeed() {
+            document.getElementById('currentSpeed').textContent = myCar.currentSpeed;
+        }
+
+        // Initial display of speed
+        updateSpeed();
+    </script>
+
+</body>
+</html>
