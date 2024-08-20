@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Iterables Example</title>
+</head>
+<body>
+    <h1>JavaScript Iterables Example</h1>
+
+    <h2>Array Iteration:</h2>
+    <div id="array-output"></div>
+
+    <h2>String Iteration:</h2>
+    <div id="string-output"></div>
+
+    <h2>Map Iteration:</h2>
+    <div id="map-output"></div>
+
+    <h2>Set Iteration:</h2>
+    <div id="set-output"></div>
+
+    <h2>Custom Iterable Iteration:</h2>
+    <div id="custom-iterable-output"></div>
+
+    <script>
+        // Array Iteration
+        const numbers = [1, 2, 3];
+        const arrayOutput = document.getElementById('array-output');
+        arrayOutput.innerHTML = Array.from(numbers).map(num => `<p>${num}</p>`).join('');
+
+        // String Iteration
+        const str = 'hello';
+        const stringOutput = document.getElementById('string-output');
+        stringOutput.innerHTML = Array.from(str).map(char => `<p>${char}</p>`).join('');
+
+        // Map Iteration
+        const map = new Map([['key1', 'value1'], ['key2', 'value2']]);
+        const mapOutput = document.getElementById('map-output');
+        mapOutput.innerHTML = Array.from(map).map(([key, value]) => `<p>${key}: ${value}</p>`).join('');
+
+        // Set Iteration
+        const set = new Set([1, 2, 3]);
+        const setOutput = document.getElementById('set-output');
+        setOutput.innerHTML = Array.from(set).map(value => `<p>${value}</p>`).join('');
+
+        // Custom Iterable
+        const customIterable = {
+            items: [1, 2, 3],
+            [Symbol.iterator]() {
+                let index = 0;
+                const items = this.items;
+                return {
+                    next() {
+                        if (index < items.length) {
+                            return { value: items[index++], done: false };
+                        } else {
+                            return { value: undefined, done: true };
+                        }
+                    }
+                };
+            }
+        };
+
+        const customIterableOutput = document.getElementById('custom-iterable-output');
+        customIterableOutput.innerHTML = Array.from(customIterable).map(item => `<p>${item}</p>`).join('');
+    </script>
+</body>
+</html>

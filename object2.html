@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Literal Shorthand Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .output {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Object Literal Shorthand Example</h1>
+
+    <button onclick="testCreateCourse()">Create Course</button>
+    <button onclick="testReviewCourse()">Review Course</button>
+
+    <div class="output" id="output"></div>
+
+    <script>
+        // Without shorthand property definition
+        function createCourseExplicit(name, status) {
+            return {
+                type: "JavaScript",
+                name: name,    // Explicitly defining the property 'name'
+                status: status // Explicitly defining the property 'status'
+            };
+        }
+
+        function reviewCourseExplicit(name) {
+            return {
+                type: "JavaScript",
+                name: name // Explicitly defining the property 'name'
+            };
+        }
+
+        // With shorthand property definition
+        function createCourseShorthand(name, status) {
+            return {
+                type: "JavaScript",
+                name,    // Shorthand: 'name' property
+                status   // Shorthand: 'status' property
+            };
+        }
+
+        function reviewCourseShorthand(name) {
+            return {
+                type: "JavaScript",
+                name // Shorthand: 'name' property
+            };
+        }
+
+        // Test functions
+        function testCreateCourse() {
+            const explicitCourse = createCourseExplicit("Advanced JavaScript", "Active");
+            const shorthandCourse = createCourseShorthand("Basic JavaScript", "Inactive");
+
+            document.getElementById('output').innerHTML = `
+                <h2>Test Create Course</h2>
+                <p><strong>Explicit Create Course:</strong> Type: ${explicitCourse.type}, Name: ${explicitCourse.name}, Status: ${explicitCourse.status}</p>
+                <p><strong>Shorthand Create Course:</strong> Type: ${shorthandCourse.type}, Name: ${shorthandCourse.name}, Status: ${shorthandCourse.status}</p>
+            `;
+        }
+
+        function testReviewCourse() {
+            const explicitReview = reviewCourseExplicit("JavaScript Essentials");
+            const shorthandReview = reviewCourseShorthand("JavaScript Fundamentals");
+
+            document.getElementById('output').innerHTML = `
+                <h2>Test Review Course</h2>
+                <p><strong>Explicit Review Course:</strong> Type: ${explicitReview.type}, Name: ${explicitReview.name}</p>
+                <p><strong>Shorthand Review Course:</strong> Type: ${shorthandReview.type}, Name: ${shorthandReview.name}</p>
+            `;
+        }
+    </script>
+
+</body>
+</html>
