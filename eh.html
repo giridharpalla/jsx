@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Event Listeners Examples</title>
+</head>
+<body>
+
+    <!-- Example 1: Click Event -->
+    <p id="text">Original Text</p>
+    <button id="changeTextButton">Change Text</button>
+
+    <!-- Example 2: Click Event (Heading) -->
+    <h1 id="heading">Giridhar Royal</h1>
+    <button id="changeHeadingButton">Change Head</button>
+
+    <!-- Example 3: Mouseover and Mouseout Events -->
+    <p id="hoverText">Hover over this text to change its background color.</p>
+
+    <!-- Example 4: Keydown Event -->
+    <input type="text" id="inputField" placeholder="Type something..." />
+    <p id="displayKey">Press a key to display it here.</p>
+
+    <!-- Example 5: Focus and Blur Events -->
+    <input type="text" id="focusInput" placeholder="Click here..." />
+
+    <!-- Example 6: Double-Click Event -->
+    <p id="doubleClickText">Double-click this text to change it.</p>
+
+    <!-- Example 7: Submit Event -->
+    <form id="myForm">
+        <input type="text" placeholder="Enter something..." required />
+        <button type="submit">Submit</button>
+    </form>
+    <p id="formMessage"></p>
+
+    <!-- Example 8: Change Event -->
+    <select id="dropdown">
+        <option value="Option 1">Option 1</option>
+        <option value="Option 2">Option 2</option>
+        <option value="Option 3">Option 3</option>
+    </select>
+    <p id="selectedOption">Select an option from the dropdown.</p>
+
+    <script>
+        // Example 1: Click Event
+        const button = document.getElementById('changeTextButton');
+        const text = document.getElementById('text');
+        button.addEventListener('click', function() {
+            text.textContent = 'Text has been changed!';
+        });
+
+        // Example 2: Click Event (Heading)
+        const button2 = document.getElementById('changeHeadingButton');
+        const heading = document.getElementById('heading');
+        button2.addEventListener('click', function() {
+            heading.textContent = 'Heading has been changed';
+        });
+
+        // Example 3: Mouseover and Mouseout Events
+        const hoverText = document.getElementById('hoverText');
+        hoverText.addEventListener('mouseover', function() {
+            hoverText.style.backgroundColor = 'yellow';
+        });
+        hoverText.addEventListener('mouseout', function() {
+            hoverText.style.backgroundColor = '';
+        });
+
+        // Example 4: Keydown Event
+        const inputField = document.getElementById('inputField');
+        const displayKey = document.getElementById('displayKey');
+        inputField.addEventListener('keydown', function(event) {
+            displayKey.textContent = `You pressed: ${event.key}`;
+        });
+
+        // Example 5: Focus and Blur Events
+        const focusInput = document.getElementById('focusInput');
+        focusInput.addEventListener('focus', function() {
+            focusInput.style.borderColor = 'green';
+        });
+        focusInput.addEventListener('blur', function() {
+            focusInput.style.borderColor = '';
+        });
+
+        // Example 6: Double-Click Event
+        const doubleClickText = document.getElementById('doubleClickText');
+        doubleClickText.addEventListener('dblclick', function() {
+            doubleClickText.textContent = 'Text has been double-clicked!';
+        });
+
+        // Example 7: Submit Event
+        const myForm = document.getElementById('myForm');
+        const formMessage = document.getElementById('formMessage');
+        myForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+            formMessage.textContent = 'Form submission prevented!';
+        });
+
+        // Example 8: Change Event
+        const dropdown = document.getElementById('dropdown');
+        const selectedOption = document.getElementById('selectedOption');
+        dropdown.addEventListener('change', function() {
+            selectedOption.textContent = `You selected: ${dropdown.value}`;
+        });
+    </script>
+
+</body>
+</html>

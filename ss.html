@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation Example</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        #message { color: blue; }
+    </style>
+</head>
+<body>
+
+    <h1>DOM Manipulation Example</h1>
+    <p id="message">Click the button to change this text.</p>
+    
+    <button id="changeTextButton">Change Text</button>
+    <button id="addElementButton">Add New Element</button>
+    
+    <div id="newElementContainer"></div>
+
+    <!-- Inline JavaScript to ensure DOM is ready -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Change the text of the message when the button is clicked
+            document.getElementById('changeTextButton').addEventListener('click', function() {
+                let messageElement = document.getElementById('message');
+                messageElement.innerText = 'The text has been changed using DOM manipulation!';
+            });
+
+            // Add a new element to the page when the button is clicked
+            document.getElementById('addElementButton').addEventListener('click', function() {
+                let newElementContainer = document.getElementById('newElementContainer');
+                
+                // Create a new paragraph element
+                let newParagraph = document.createElement('p');
+                newParagraph.innerText = 'This is a new paragraph added to the DOM!';
+                
+                // Add the new paragraph to the container
+                newElementContainer.appendChild(newParagraph);
+
+            });
+        });
+        document.write("<p>this is text</p>");
+        document.write("<p>This text is displayed using document.write!</p>");
+
+    </script>
+
+</body>
+</html>
